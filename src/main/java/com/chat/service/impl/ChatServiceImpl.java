@@ -55,6 +55,13 @@ public class ChatServiceImpl implements ChatService {
 	}	
 
 	@Override
+	public void _requireUuid(String type, UUID uuid) {
+		if (uuid == null) {
+			throw new IllegalArgumentException( type + " UUID is missing");
+		}
+	}
+
+	@Override
 	public Message addMessage(Message message, UUID chatUuid) {
 		Chat chat = this.chats.get(this._getChatIndexByUuid(chatUuid));
 		message.setUuid(chatUuid);

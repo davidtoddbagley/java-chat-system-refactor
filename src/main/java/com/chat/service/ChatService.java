@@ -10,6 +10,14 @@ import com.chat.model.Message;
 public interface ChatService {
 
 	/**
+	 * Throw error if required uuid is missing / malformed
+	 * @param String
+	 * @param uuid
+	 * @return
+	 */
+	void _requireUuid(String type, UUID uuid);
+
+	/**
 	 * Add message to an active chat channel
 	 * @param message
 	 * @param chatUuid

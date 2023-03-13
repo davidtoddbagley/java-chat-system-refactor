@@ -29,6 +29,7 @@ public class ChatController {
 	@DeleteMapping("/chats/{chatUuid}")
 	public ResponseEntity<?> deleteChat(@NotNull @PathVariable UUID chatUuid) {
 		try {
+			service._requireUuid("Chat", chatUuid);
 			service.deleteChat(chatUuid);
 			return new ResponseEntity<>( HttpStatus.OK);
 		} catch(Exception e) {
@@ -39,6 +40,8 @@ public class ChatController {
 	@DeleteMapping("/chats/{chatUuid}/messages/{messageUuid}")
 	public ResponseEntity<?> deleteMessage(@NotNull @PathVariable UUID chatUuid, @NotNull @PathVariable UUID messageUuid) {
 		try {
+			service._requireUuid("Chat", chatUuid);
+			service._requireUuid("Message", messageUuid);
 			service.deleteMessage(chatUuid, messageUuid);
 			return new ResponseEntity<>( HttpStatus.OK);
 		} catch(Exception e) {
@@ -58,6 +61,7 @@ public class ChatController {
 	@GetMapping("/chats/{chatUuid}")
 	public ResponseEntity<?> getChat(@NotNull @PathVariable UUID chatUuid) {
 		try {
+			service._requireUuid("Chat", chatUuid);
 			return new ResponseEntity<>(service.getChat(chatUuid), HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -67,6 +71,7 @@ public class ChatController {
 	@GetMapping("/chats/{chatUuid}/messages")
 	public ResponseEntity<?> getChatMessages(@NotNull @PathVariable UUID chatUuid) {
 		try {
+			service._requireUuid("Chat", chatUuid);
 			return new ResponseEntity<>(service.getChatMessages(chatUuid), HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -87,6 +92,7 @@ public class ChatController {
 		 *		(c) channel to be CLEARED of all MESSAGES
 		 */
 		try {
+			service._requireUuid("Chat", chatUuid);
 			return new ResponseEntity<>(service.endChat(chatUuid), HttpStatus.CREATED);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -105,6 +111,7 @@ public class ChatController {
 	@PostMapping("/chats/{chatUuid}/messages")
 	public ResponseEntity<?> addMessage(@NotNull @PathVariable UUID chatUuid, @NotNull @RequestBody Message message) {
 		try {
+			service._requireUuid("Chat", chatUuid);
 			return new ResponseEntity<>(service.addMessage(message, chatUuid), HttpStatus.CREATED);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -114,6 +121,7 @@ public class ChatController {
 	@PutMapping("/chats/{chatUuid}")
 	public ResponseEntity<?> updateChat(@NotNull @PathVariable UUID chatUuid, @NotNull @RequestBody Message message) {
 		try {
+			service._requireUuid("Chat", chatUuid);
 			return new ResponseEntity<>(service.updateChat(chatUuid, message), HttpStatus.OK);
 		} catch(Exception e) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
