@@ -1,24 +1,25 @@
 package com.chat.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Message {
-	private Long chatId;
-	private Long messageId;
+	private UUID chatUuid;
+	private UUID messageUuid;
 	private String message;
 	private Date createdDate;
 
-	public Long getChatId() {
-		return chatId;
+	public UUID getChatUuid() {
+		return chatUuid;
 	}
-	public void setChatId(Long chatId) {
-		this.chatId = chatId;
+	public void setChatUuid(UUID chatUuid) {
+		this.chatUuid = chatUuid;
 	}
-	public Long getMessageId() {
-		return messageId;
+	public UUID getUuid() {
+		return messageUuid;
 	}
-	public void setMessageId(Long messageId) {
-		this.messageId = messageId;
+	public void setUuid(UUID messageUuid) {
+		this.messageUuid = messageUuid;
 	}
 	public String getMessage() {
 		return message;
