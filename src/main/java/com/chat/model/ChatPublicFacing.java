@@ -1,13 +1,11 @@
 package com.chat.model;
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
-public class Chat {
+public class ChatPublicFacing {
 	private UUID chatUuid;
 	private String name;
-	private List<Message> messages;
 	private Date createdDate;
 	public UUID getUuid() {
 		return chatUuid;
@@ -20,12 +18,6 @@ public class Chat {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public List<Message> getMessages() {
-		return messages;
-	}
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
 	}
 	public Date getCreatedDate() {
 		return createdDate;
